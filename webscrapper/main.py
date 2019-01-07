@@ -6,9 +6,7 @@ import db
 class Course:
     def __init__(self, title, classes):
         self.code = title.split(" ")[1]
-        #print(self.code)
         self.category = title.split(" ")[0]
-        #print(self.category)
         self.title = ""
         for i, w in enumerate(title.split(" ")[2:]):
             if (i == 0):
@@ -17,7 +15,7 @@ class Course:
                 self.title += " " + w
 
         self.classes = classes
-       # print(classes)
+        
 def isHeaderRow(row):
     try:
         row['valign']

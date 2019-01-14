@@ -10,7 +10,11 @@ class Database:
             # create database connection
             self.connection = mysql.connect(host=self.host, unix_socket='/tmp/mysql.sock', user=self.user, passwd=self.password, db=self.db)
             self.cursor = self.connection.cursor()
-
+            self.cursor.execute("SET FOREIGN_KEY_CHECKS = 0;")
+            self.cursor.execute("truncate TABLE dal.classes;")
+            self.cursor.execute("truncate TABLE dal.course_classes;")
+            self.cursor.execute("truncate TABLE dal.courses;")
+            self.cursor.execute("SET FOREIGN_KEY_CHECKS = 1;")
         def __del__(self):
             self.connection.close()
 

@@ -49,7 +49,7 @@ class Database:
                     if (classes[i]['credithours'] == "-"):
                         classes[i]['credithours'] = 0
                     self.cursor.execute("INSERT INTO classes(crn, section, type, credit_hours, days, times, location, max, current, waitlist, prof) VALUES (\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\",\"{5}\",\"{6}\",\"{7}\",\"{8}\",\"{9}\",\"{10}\");".format(int(classes[i]['crn']), classes[i]['section'], classes[i]['type'], float(classes[i]['credithours']), self.convertDays(classes[i]['days']), classes[i]['times'], classes[i]['location'], classes[i]['max'], classes[i]['current'], classes[i]['waitlist'], classes[i]['prof']))
-                    print(classes.crn)
+                    #print(classes.crn)
                     self.connection.commit()
                     classId = self.cursor.lastrowid
                     self.addRelation(courseId, classId)

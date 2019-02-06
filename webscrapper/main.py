@@ -60,44 +60,55 @@ def parseCourse(course_data):
             course['type'] = courseInfo[3].string
             course['credithours'] = courseInfo[4].string
             course['days'] = parseDate(courseInfo[6:11])
-
-            course['times'] = courseInfo[11].string
-            if (course['times'] == None):
-                time_one = courseInfo[11].br.previous_sibling
-                time_two = courseInfo[11].br.next_sibling
-                course['times'] = "ONE(" + time_one + ") TWO(" + time_two + ")"
-
-            course['location'] = courseInfo[12].string
-            if (course['location'] == None):
-                loc_one = courseInfo[12].br.previous_sibling
-                loc_two = courseInfo[12].br.next_sibling
-                course['location'] = "ONE(" + loc_one + ") TWO(" + loc_two + ")"
-
-            course['max'] = courseInfo[13].p.string
-            if (course['max'] == None):
-                open_ = courseInfo[13].p.br.previous_sibling
-                disp = courseInfo[13].p.br.next_sibling
-                course['max'] = open_.replace(" ", "") + " " + disp.replace(" ", "")
-
-            course['current'] = courseInfo[14].p.string
-            if (course['current'] == None):
-                open_curr = courseInfo[14].p.br.previous_sibling
-                disp_curr = courseInfo[14].p.br.next_sibling
-                course['current'] = "FIRST("+ open_curr.replace(" ", "") + ") SEC("+ disp_curr.replace(" ", "") + ")"
+            
+            print(courseInfo[7].string)
 
             try:
-                course['waitlist'] = courseInfo[16].p.string
-                if course['waitlist'] == None:
-                    course['waitlist'] = 0
-            except:
-                course['waitlist'] = 'NA'
+                course['times'] = courseInfo[11].string
+                if (course['times'] == None):
+                    #print(course['crn']+ "time is none")
+                    time_one = courseInfo[11].br.previous_sibling
+                    time_two = courseInfo[11].br.next_sibling
+                    course['times'] = "ONE(" + time_one + ") TWO(" + time_two + ")"
 
-            if courseInfo[20].string != None:
-                course['prof'] = courseInfo[20].string.strip(' \t\n\r')
-            else:
-                first_prof = courseInfo[20].br.previous_sibling
-                sec_prof = courseInfo[20].br.next_sibling
-                course['prof'] = "ONE("+first_prof.strip(' \t\n\r') + ") TWO(" + sec_prof.strip(' \t\n\r') + ")"
+                course['location'] = courseInfo[12].string
+                if (course['location'] == None):
+                    print(course['crn']+ "location is none")
+                    loc_one = courseInfo[12].br.previous_sibling
+                    loc_two = courseInfo[12].br.next_sibling
+                    course['location'] = "ONE(" + loc_one + ") TWO(" + loc_two + ")"
+
+                course['max'] = courseInfo[13].p.string
+                if (course['max'] == None):
+                    print(course['crn']+ "max is none")
+                    open_ = courseInfo[13].p.br.previous_sibling
+                    disp = courseInfo[13].p.br.next_sibling
+                    course['max'] = open_.replace(" ", "") + " " + disp.replace(" ", "")
+
+                course['current'] = courseInfo[14].p.string
+                if (course['current'] == None):
+                    print(course['crn']+ "current is none")
+                    open_curr = courseInfo[14].p.br.previous_sibling
+                    disp_curr = courseInfo[14].p.br.next_sibling
+                    course['current'] = "FIRST("+ open_curr.replace(" ", "") + ") SEC("+ disp_curr.replace(" ", "") + ")"
+
+                try:
+                    course['waitlist'] = courseInfo[16].p.string
+                    if course['waitlist'] == None:
+                        course['waitlist'] = 0
+                except:
+                    course['waitlist'] = 'NA'
+
+                if courseInfo[20].string != None:
+                    course['prof'] = courseInfo[20].string.strip(' \t\n\r')
+                else:
+                    first_prof = courseInfo[20].br.previous_sibling
+                    sec_prof = courseInfo[20].br.next_sibling
+                    course['prof'] = "ONE("+first_prof.strip(' \t\n\r') + ") TWO(" + sec_prof.strip(' \t\n\r') + ")"
+            except:
+                pass
+                #print("none none")
+                
 
             courses.append(course)
         except Exception as e:
@@ -118,30 +129,34 @@ def parseUrl(url):
         # MARK: PAGECOUNT
         soup = BeautifulSoup(html_doc, 'lxml')
 
+        # //Read total number of pages
         try:
             pageCount = len(soup.find_all('table', attrs={'class': 'plaintable'})[3].find('center').find_all('a')) + 1
         except:
             pageCount = 1
 
         # MARK: ROWS
-        # for w in soup.find_all('select')[1].find_all('option')[1:]:
-        #     print("\""+w['value'], end='\",')
-
+        #for w in soup.find_all('select')[1].find_all('option')[1:]:
+         #    print("\""+w['value'], end='\",')
+        
+        #read table line by line
         rows = soup.find_all('table', attrs={'class': 'dataentrytable'})[1].find_all('tr')
 
         headerIndexs = []
-        for i, row in enumerate(rows):
+        for i , row in enumerate(rows):
             if isHeaderRow(rows[i]):
                 headerIndexs.append(i)
-
+       
         courses_raw = []
         for i in range(0, len(headerIndexs) - 1):
             course_raw = rows[headerIndexs[i]:(headerIndexs[i+1])]
             courses_raw.append(course_raw)
+        #print(course_raw)
         course_raw = rows[headerIndexs[len(headerIndexs) - 1]:]
         courses_raw.append(course_raw)
 
         for course in courses_raw:
+            #print(parseCourse(course))
             courses.append(parseCourse(course))
         j += 1
     return courses

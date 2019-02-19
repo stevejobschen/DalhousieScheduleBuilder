@@ -63,8 +63,8 @@ def parseCourse(course_data):
 
             stringCache = courseInfo[12]
             print(stringCache)
-            stringCache1 = eval(stringCache)
-            
+            stringCache.lstrip('\"')
+            stringCache1 = stringCache.replace("\"","").replace("\"","").replace("\"","").replace("\"","")
             print(stringCache1)
             print(stringCache.find('<td class="dettb" nowrap="">&amp;nbsp&amp;'))
             #Verify whether there are two time in two differnet time period

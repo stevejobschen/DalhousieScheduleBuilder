@@ -1,5 +1,5 @@
-**Site isn't functional anymore. I was switching over to AWS, then other life priorities came up. 1 year later (and after some requests) I'm redoing this project :)**
-~Check out the live website, we have mobile support (well... kinda), at [dalschedulebuilder.com](http://dalschedulebuilder.com)~ 
+**Site isn't functional anymore. ~I was switching over to AWS, then other life priorities came up. 1 year later (and after some requests) I'm redoing this project :)**
+Check out the live website, we have mobile support (well... kinda), at [dalschedulebuilder.com](http://dalschedulebuilder.com)~ 
 
 # DalhousieScheduleBuilder [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 Dal Schedule Builder is a web app built for Dalhousie students registering for classes. As a student myself, registering for classes was a pain, I'd hand draw a table and fill in classes. When I came upon a conflict, I would need to erase the classes from my table. This, as well as  having to record all current CRN's, left me with a messy page. Hopefully this helps some people.
@@ -25,6 +25,11 @@ I'm web scrapping [Dal TimeTable](https://dalonline.dal.ca/PROD/fysktime.P_Displ
 * Click on CRN to view course information
 
 ## IN PROGRESS
+
+## Most important things to complish
+* Make American great again
+
+
 
 ## Last 5 things completed
 * Add clear all selected classes button

@@ -61,12 +61,17 @@ def parseCourse(course_data):
             course['credithours'] = courseInfo[4].string
             course['days'] = parseDate(courseInfo[6:11])
             
-            '''
+            
             stringCache = courseInfo[12]
-            print(stringCache)
-            stringCache.lstrip('\"')
+            #
+            # print(stringCache)
+            stringVei=stringCache[28:46]
+            print(stringVei)
+            
+            '''stringCache.lstrip('\"')
             stringCache1 = stringCache.replace("\"","").replace("\"","").replace("\"","").replace("\"","")
             print(stringCache1)/'''
+
             print(courseInfo[12].find('<td class="dettb" nowrap="">&amp;nbsp&amp;'))
             #Verify whether there are two time in two differnet time period
             if courseInfo[12].find("***")==0:

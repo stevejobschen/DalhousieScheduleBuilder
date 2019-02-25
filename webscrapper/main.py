@@ -59,17 +59,14 @@ def parseCourse(course_data):
             if (courseInfo[12].string == None):
                 loc_one = courseInfo[12].br.previous_sibling.string +""
                 if  loc_one == "*** 07-JAN-2019 - 05-APR-2019 ***":
-                    print(courseInfo[12].br.next_sibling)
-                    print(courseInfo[12].br.next_sibling)
-                    print(1)
-                    
+
                     course = {}
                     course['crn'] = courseInfo[1].find('b').string
                     course['section'] = courseInfo[2].string
                     course['type'] = courseInfo[3].string
                     course['credithours'] = courseInfo[4].string
-                    course['days'] = parseDate(courseInfo[6:11].string.br.next_sibling)
-                    
+                    course['days'] = parseDate(courseInfo[6:11])
+                    print(courseInfo[13].p.string)
 
                     course['times'] = courseInfo[11].br.next_sibling
                     if (course['times'] == None):
@@ -82,8 +79,6 @@ def parseCourse(course_data):
                         loc_one = courseInfo[12].br.next_sibling
                         loc_two = courseInfo[12].br.next_sibling.next_sibling
                         course['location'] = "ONE(" + loc_one + ") TWO(" + loc_two + ")"
-
-                    print(courseInfo[12].br.next_sibling)
 
                     course['max'] = courseInfo[13].p.string
                     if (course['max'] == None):
@@ -110,6 +105,7 @@ def parseCourse(course_data):
                         first_prof = courseInfo[20].br.previous_sibling
                         sec_prof = courseInfo[20].br.next_sibling
                         course['prof'] = "ONE("+first_prof.strip(' \t\n\r') + ") TWO(" + sec_prof.strip(' \t\n\r') + ")"
+
             
 
 

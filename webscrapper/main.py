@@ -53,6 +53,11 @@ def parseCourse(course_data):
     for i in range(1, len(course_data)):
         courseInfo = course_data[i].find_all('td')
 
+        courInfo12=courseInfo[12].string
+        print(courInfo12)
+       # if "***"in courInfo12:
+        #    print("Shit")
+
         try:
             course = {}
             course['crn'] = courseInfo[1].find('b').string

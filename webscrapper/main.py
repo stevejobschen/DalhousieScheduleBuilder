@@ -32,6 +32,7 @@ def parseDate(times):
             days.append(parseDoubleDate(time))
         else:
             days.append(1)
+            #print(days)
     return days
 
 def parseDoubleDate(time):
@@ -68,9 +69,9 @@ def parseCourse(course_data):
                     course['days'] = parseDate(courseInfo[6:11])
 
                     course['times'] = courseInfo[11].br.next_sibling
-                    if (course['times'] == None):
+                    if (courseInfo[11].br.next_sibling.next_sibling != None):
                         time_one = courseInfo[11].br.next_sibling
-                        time_two = courseInfo[11].br.next_sibling.next_sibling
+                        time_two = courseInfo[11].br.next_sibling.next_sibling.next_sibling
                         course['times'] = "ONE(" + time_one + ") TWO(" + time_two + ")"
 
                     course['location'] = courseInfo[12].br.next_sibling
@@ -104,7 +105,7 @@ def parseCourse(course_data):
                         first_prof = courseInfo[20].br.previous_sibling
                         sec_prof = courseInfo[20].br.next_sibling
                         course['prof'] = "ONE("+first_prof.strip(' \t\n\r') + ") TWO(" + sec_prof.strip(' \t\n\r') + ")"
-                            
+
             # Normal situation
             else:
                 course = {}
@@ -215,12 +216,12 @@ def main():
     # fall subjects
     #subjects = ["ACSC", "ANAT", "ARTC", "ARBC", "ARCH", "ASSC", "BIOC", "BIOE", "BIOL", "BMNG", "BUSI", "CANA", "CHEE", "CHEM", "CHIN", "CIVL", "CLAS", "COMM", "CH_E", "CPST", "CSCI", "CTMP", "CRWR", "DEHY", "DENT", "DMUT", "EMSP", "ERTH", "ECON", "ECED", "ECMM", "ENGI", "INWK", "ENGM", "ENGL", "ENSL", "ENVE", "ENVS", "ENVI", "EURO", "FILM", "FIGA", "FIGS", "FOSC", "FREN", "GWST", "GEOG", "GERM", "HESA", "HINF", "HLTH", "HPRO", "HSCE", "HAHP", "HSTC", "HIST", "HUCD", "INDG", "IENG", "INFX", "INFO", "INTE", "INTD", "IPHE", "ITAL", "JOUR", "KINE", "KING", "LAWS", "LEIS", "MRIT", "MGMT", "MARA", "MARI", "MATL", "MATH", "MTHA", "MECH", "MEDP", "MEDR", "MICI", "MINE", "MUSC", "NESC", "NUMT", "NURS", "OCCU", "OCEA", "ORAL", "PHDP", "PATH", "PERF", "PERI", "PHAC", "PHAR", "PHIL", "PHYC", "PHYL", "PHYT", "PLAN", "POLI", "PGPH", "PEAS", "PROS", "PSYR", "PSYO", "PUAD", "RADT", "REGN", "RELS", "RSPT", "RUSN", "SCIE", "SLWK", "SOSA", "SPAN", "STAT", "SUST", "THEA", "TYPR", "VISC"]
     # winter subjects
-    subjects = ["ACSC","ANAT","ARBC","ARCH","ASSC","BIOC","BIOE","BIOL","BMNG","BUSI","CANA","CNLT","CHEE","CHEM","CHIN","CIVL","CLAS","COMM","CH_E","CPST","CSCI","CTMP","CRWR","DEHY","DENT","DMUT","EMSP","ERTH","ECON","ECED","ECMM","ENGI","INWK","ENGM","ENGL","ENSL","ENVE","ENVS","ENVI","EURO","FILM","FOSC","FREN","GWST","GEOG","GERM","HESA","HINF","HLTH","HPRO","HSCE","HAHP","HSTC","HIST","HUCD","INDG","IENG","INFO","INTE","INTD","IPHE","ITAL","JOUR","KINE","KING","LAWS","LEIS","MRIT","MGMT","MARA","MARI","MATL","MATH","MECH","MDLT","MEDP","MEDR","MICI","MINE","MUSC","NESC","NUMT","NURS","OCCU","OCEA","ORAL","PHDP","PATH","PERF","PERI","PHAC","PHAR","PHIL","PHYC","PHYL","PHYT","PLAN","POLI","PGPH","PEAS","PROS","PSYR","PSYO","PUAD","RADT","REGN","RELS","RSPT","RUSN","SCIE","SLWK","SOSA","SPAN","STAT","SUST","THEA","TYPR","VISC"]
+    #subjects = ["ACSC","ANAT","ARBC","ARCH","ASSC","BIOC","BIOE","BIOL","BMNG","BUSI","CANA","CNLT","CHEE","CHEM","CHIN","CIVL","CLAS","COMM","CH_E","CPST","CSCI","CTMP","CRWR","DEHY","DENT","DMUT","EMSP","ERTH","ECON","ECED","ECMM","ENGI","INWK","ENGM","ENGL","ENSL","ENVE","ENVS","ENVI","EURO","FILM","FOSC","FREN","GWST","GEOG","GERM","HESA","HINF","HLTH","HPRO","HSCE","HAHP","HSTC","HIST","HUCD","INDG","IENG","INFO","INTE","INTD","IPHE","ITAL","JOUR","KINE","KING","LAWS","LEIS","MRIT","MGMT","MARA","MARI","MATL","MATH","MECH","MDLT","MEDP","MEDR","MICI","MINE","MUSC","NESC","NUMT","NURS","OCCU","OCEA","ORAL","PHDP","PATH","PERF","PERI","PHAC","PHAR","PHIL","PHYC","PHYL","PHYT","PLAN","POLI","PGPH","PEAS","PROS","PSYR","PSYO","PUAD","RADT","REGN","RELS","RSPT","RUSN","SCIE","SLWK","SOSA","SPAN","STAT","SUST","THEA","TYPR","VISC"]
     # 2019 summer subjects
     #subjects = ["ANAT", "ASSC", "BIOC", "BIOT", "BIOE", "BIOL", "BMNG", "BUSI", "CANA", "CHEE", "CHEM", "CIVL", "CLAS", "COMM","CMSD", "CH_E", "CPST", "CSCI", "DEHY", "DENT", "DMUT", "EMSP", "ERTH", "ECON", "ECED", "ECMM", "ENGI", "INWK", "ENGM", "ENGL", "ENSL", "ENVE", "ENVS", "ENVI", "FOSC", "FREN", "GWST", "GEOG", "GERM", "HESA", "HINF", "HLTH", "HPRO", "HSTC", "HIST", "IENG", "INFO", "INTE", "INTD", "IPHE", "JOUR", "KINE", "LAWS", "LEIS", "MGMT", "MARA", "MARI", "MATL", "MATH", "MECH", "MEDP", "MEDR", "MEDI", "MICI", "MINE", "MUSC", "NESC", "NUMT", "NURS", "OCCU", "OCEA", "ORAL", "PHDP", "PATH", "PERI", "PHAC", "PETR", "PHAR", "PHAC" , "PHIL", "PHYC", "PHYL", "PHYT", "PLAN", "POLI", "PGPH", "PEAS", "PSYR", "PSYO", "PUAD", "RADT", "REGN", "RELS", "RSPT", "RUSN", "SCIE", "SLWK", "SOSA", "SPAN", "STAT", "SUST", "THEA", "VISC"]
 
     # test subjects
-    #subjects =  ["CSCI"]
+    subjects =  ["CSCI"]
     terms = {
     "2018winter":"201920",
     "2018fall":"201910",

@@ -53,56 +53,114 @@ def parseCourse(course_data):
     for i in range(1, len(course_data)):
         courseInfo = course_data[i].find_all('td')
 
-        courInfo12=courseInfo[12].string
-        print(courInfo12)
-       # if "***"in courInfo12:
-        #    print("Shit")
 
         try:
-            course = {}
-            course['crn'] = courseInfo[1].find('b').string
-            course['section'] = courseInfo[2].string
-            course['type'] = courseInfo[3].string
-            course['credithours'] = courseInfo[4].string
-            course['days'] = parseDate(courseInfo[6:11])
+            #if there is notation on location
+            if (courseInfo[12].string == None):
+                loc_one = courseInfo[12].br.previous_sibling.string +""
+                if  loc_one == "*** 07-JAN-2019 - 05-APR-2019 ***":
+                    print(courseInfo[12].br.next_sibling)
+                    print(courseInfo[12].br.next_sibling)
+                    print(1)
+                    
+                    course = {}
+                    course['crn'] = courseInfo[1].find('b').string
+                    course['section'] = courseInfo[2].string
+                    course['type'] = courseInfo[3].string
+                    course['credithours'] = courseInfo[4].string
+                    course['days'] = parseDate(courseInfo[6:11].string.br.next_sibling)
+                    
 
-            course['times'] = courseInfo[11].string
-            if (course['times'] == None):
-                time_one = courseInfo[11].br.previous_sibling
-                time_two = courseInfo[11].br.next_sibling
-                course['times'] = "ONE(" + time_one + ") TWO(" + time_two + ")"
+                    course['times'] = courseInfo[11].br.next_sibling
+                    if (course['times'] == None):
+                        time_one = courseInfo[11].br.next_sibling
+                        time_two = courseInfo[11].br.next_sibling.next_sibling
+                        course['times'] = "ONE(" + time_one + ") TWO(" + time_two + ")"
 
-            course['location'] = courseInfo[12].string
-            if (course['location'] == None):
-                loc_one = courseInfo[12].br.previous_sibling
-                loc_two = courseInfo[12].br.next_sibling
-                course['location'] = "ONE(" + loc_one + ") TWO(" + loc_two + ")"
+                    course['location'] = courseInfo[12].br.next_sibling
+                    if (course['location'] == None):
+                        loc_one = courseInfo[12].br.next_sibling
+                        loc_two = courseInfo[12].br.next_sibling.next_sibling
+                        course['location'] = "ONE(" + loc_one + ") TWO(" + loc_two + ")"
 
-            course['max'] = courseInfo[13].p.string
-            if (course['max'] == None):
-                open_ = courseInfo[13].p.br.previous_sibling
-                disp = courseInfo[13].p.br.next_sibling
-                course['max'] = open_.replace(" ", "") + " " + disp.replace(" ", "")
+                    print(courseInfo[12].br.next_sibling)
 
-            course['current'] = courseInfo[14].p.string
-            if (course['current'] == None):
-                open_curr = courseInfo[14].p.br.previous_sibling
-                disp_curr = courseInfo[14].p.br.next_sibling
-                course['current'] = "FIRST("+ open_curr.replace(" ", "") + ") SEC("+ disp_curr.replace(" ", "") + ")"
+                    course['max'] = courseInfo[13].p.string
+                    if (course['max'] == None):
+                        open_ = courseInfo[13].p.br.previous_sibling
+                        disp = courseInfo[13].p.br.next_sibling
+                        course['max'] = open_.replace(" ", "") + " " + disp.replace(" ", "")
 
-            try:
-                course['waitlist'] = courseInfo[16].p.string
-                if course['waitlist'] == None:
-                    course['waitlist'] = 0
-            except:
-                course['waitlist'] = 'NA'
+                    course['current'] = courseInfo[14].p.string
+                    if (course['current'] == None):
+                        open_curr = courseInfo[14].p.br.previous_sibling
+                        disp_curr = courseInfo[14].p.br.next_sibling
+                        course['current'] = "FIRST("+ open_curr.replace(" ", "") + ") SEC("+ disp_curr.replace(" ", "") + ")"
 
-            if courseInfo[20].string != None:
-                course['prof'] = courseInfo[20].string.strip(' \t\n\r')
+                    try:
+                        course['waitlist'] = courseInfo[16].p.string
+                        if course['waitlist'] == None:
+                            course['waitlist'] = 0
+                    except:
+                        course['waitlist'] = 'NA'
+
+                    if courseInfo[20].string != None:
+                        course['prof'] = courseInfo[20].string.strip(' \t\n\r')
+                    else:
+                        first_prof = courseInfo[20].br.previous_sibling
+                        sec_prof = courseInfo[20].br.next_sibling
+                        course['prof'] = "ONE("+first_prof.strip(' \t\n\r') + ") TWO(" + sec_prof.strip(' \t\n\r') + ")"
+            
+
+
+
+
+            # Normal situation
             else:
-                first_prof = courseInfo[20].br.previous_sibling
-                sec_prof = courseInfo[20].br.next_sibling
-                course['prof'] = "ONE("+first_prof.strip(' \t\n\r') + ") TWO(" + sec_prof.strip(' \t\n\r') + ")"
+                course = {}
+                course['crn'] = courseInfo[1].find('b').string
+                course['section'] = courseInfo[2].string
+                course['type'] = courseInfo[3].string
+                course['credithours'] = courseInfo[4].string
+                course['days'] = parseDate(courseInfo[6:11])
+
+                course['times'] = courseInfo[11].string
+                if (course['times'] == None):
+                    time_one = courseInfo[11].br.previous_sibling
+                    time_two = courseInfo[11].br.next_sibling
+                    course['times'] = "ONE(" + time_one + ") TWO(" + time_two + ")"
+
+                course['location'] = courseInfo[12].string
+                if (course['location'] == None):
+                    loc_one = courseInfo[12].br.previous_sibling
+                    loc_two = courseInfo[12].br.next_sibling
+                    course['location'] = "ONE(" + loc_one + ") TWO(" + loc_two + ")"
+
+                course['max'] = courseInfo[13].p.string
+                if (course['max'] == None):
+                    open_ = courseInfo[13].p.br.previous_sibling
+                    disp = courseInfo[13].p.br.next_sibling
+                    course['max'] = open_.replace(" ", "") + " " + disp.replace(" ", "")
+
+                course['current'] = courseInfo[14].p.string
+                if (course['current'] == None):
+                    open_curr = courseInfo[14].p.br.previous_sibling
+                    disp_curr = courseInfo[14].p.br.next_sibling
+                    course['current'] = "FIRST("+ open_curr.replace(" ", "") + ") SEC("+ disp_curr.replace(" ", "") + ")"
+
+                try:
+                    course['waitlist'] = courseInfo[16].p.string
+                    if course['waitlist'] == None:
+                        course['waitlist'] = 0
+                except:
+                    course['waitlist'] = 'NA'
+
+                if courseInfo[20].string != None:
+                    course['prof'] = courseInfo[20].string.strip(' \t\n\r')
+                else:
+                    first_prof = courseInfo[20].br.previous_sibling
+                    sec_prof = courseInfo[20].br.next_sibling
+                    course['prof'] = "ONE("+first_prof.strip(' \t\n\r') + ") TWO(" + sec_prof.strip(' \t\n\r') + ")"
 
             courses.append(course)
         except Exception as e:

@@ -1,1 +1,1 @@
-stringCache
+                    print(course['location'])

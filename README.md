@@ -29,12 +29,9 @@ Web scrapping [Dal TimeTable](https://dalonline.dal.ca/PROD/fysktime.P_DisplaySc
 
 ## IN PROGRESS
 
-## Most important things to complish
-* Make American great again
 
 
-
-##Complished
+## Done
 
 - Fix the webscrapping for days
 

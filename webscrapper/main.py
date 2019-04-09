@@ -48,7 +48,11 @@ def parseDoubleDate(time):
         return 0
 
 def parseCourse(course_data):
-    title = course_data[0].find('b').string # parse title into CSCI CODE and Course Name
+    termNub=course_data[1].find_all('td')[1].find('b').string+"" #get crn and get first letter
+    # print(termNub[0])
+    
+    title = course_data[0].find('b').string+" "+termNub[0] # parse title into CSCI CODE and Course Name +Add ter,number to the end of the object
+    # print(title)
     courses = []
 
     for i in range(1, len(course_data)):
@@ -219,21 +223,25 @@ def main():
     #subjects = ["ACSC","ANAT","ARBC","ARCH","ASSC","BIOC","BIOE","BIOL","BMNG","BUSI","CANA","CNLT","CHEE","CHEM","CHIN","CIVL","CLAS","COMM","CH_E","CPST","CSCI","CTMP","CRWR","DEHY","DENT","DMUT","EMSP","ERTH","ECON","ECED","ECMM","ENGI","INWK","ENGM","ENGL","ENSL","ENVE","ENVS","ENVI","EURO","FILM","FOSC","FREN","GWST","GEOG","GERM","HESA","HINF","HLTH","HPRO","HSCE","HAHP","HSTC","HIST","HUCD","INDG","IENG","INFO","INTE","INTD","IPHE","ITAL","JOUR","KINE","KING","LAWS","LEIS","MRIT","MGMT","MARA","MARI","MATL","MATH","MECH","MDLT","MEDP","MEDR","MICI","MINE","MUSC","NESC","NUMT","NURS","OCCU","OCEA","ORAL","PHDP","PATH","PERF","PERI","PHAC","PHAR","PHIL","PHYC","PHYL","PHYT","PLAN","POLI","PGPH","PEAS","PROS","PSYR","PSYO","PUAD","RADT","REGN","RELS","RSPT","RUSN","SCIE","SLWK","SOSA","SPAN","STAT","SUST","THEA","TYPR","VISC"]
     # 2019 summer subjects
     #subjects = ["ANAT", "ASSC", "BIOC", "BIOT", "BIOE", "BIOL", "BMNG", "BUSI", "CANA", "CHEE", "CHEM", "CIVL", "CLAS", "COMM","CMSD", "CH_E", "CPST", "CSCI", "DEHY", "DENT", "DMUT", "EMSP", "ERTH", "ECON", "ECED", "ECMM", "ENGI", "INWK", "ENGM", "ENGL", "ENSL", "ENVE", "ENVS", "ENVI", "FOSC", "FREN", "GWST", "GEOG", "GERM", "HESA", "HINF", "HLTH", "HPRO", "HSTC", "HIST", "IENG", "INFO", "INTE", "INTD", "IPHE", "JOUR", "KINE", "LAWS", "LEIS", "MGMT", "MARA", "MARI", "MATL", "MATH", "MECH", "MEDP", "MEDR", "MEDI", "MICI", "MINE", "MUSC", "NESC", "NUMT", "NURS", "OCCU", "OCEA", "ORAL", "PHDP", "PATH", "PERI", "PHAC", "PETR", "PHAR", "PHAC" , "PHIL", "PHYC", "PHYL", "PHYT", "PLAN", "POLI", "PGPH", "PEAS", "PSYR", "PSYO", "PUAD", "RADT", "REGN", "RELS", "RSPT", "RUSN", "SCIE", "SLWK", "SOSA", "SPAN", "STAT", "SUST", "THEA", "VISC"]
-
+    #2020 Fall
+    subjects = ["ACSC", "ANAT","ARBC", "ARCH", "ASSC", "BIOC", "BIOE", "BIOL", "BMNG", "BUSI", "CANA", "CHEE", "CHEM", "CHIN", "CIVL", "CLAS", "COMM", "CH_E", "CPST", "CSCI", "CTMP", "CRWR", "DEHY", "DENT", "DMUT", "EMSP", "ERTH", "ECON", "ECED", "ECMM", "ENGI", "ENGM", "ENGL", "ENSL", "ENVE", "ENVS", "ENVI", "EURO", "FILM", "FIGA", "FIGS", "FOSC", "FREN", "GWST", "GEOG", "GERM", "HESA", "HINF", "HLTH", "HPRO", "HSCE", "HAHP", "HSTC", "HIST", "INDG", "IENG", "INFO", "INTE", "INTD", "IPHE", "ITAL", "JOUR", "KINE", "KING", "LAWS", "LEIS", "MRIT", "MGMT", "MARA", "MARI", "MATL", "MATH", "MECH", "MEDP", "MEDR", "MICI", "MINE", "MUSC", "NESC", "NUMT", "NURS", "OCCU", "OCEA", "ORAL", "PHDP", "PATH", "PERF", "PERI", "PHAC", "PHAR", "PHIL", "PHYC", "PHYL", "PHYT", "PLAN", "POLI", "PGPH", "PEAS", "PROS", "PSYR", "PSYO", "PUAD", "RADT", "REGN", "RELS", "RSPT", "RUSN", "SCIE", "SLWK", "SOSA", "SPAN", "STAT", "SUST", "THEA", "TYPR", "VISC"]
     # test subjects
-    subjects =  ["CSCI"]
+    #subjects =  ["CSCI","INFO", "INTE", "INTD", "IPHE", "ITAL", "JOUR", "KINE", "KING", "LAWS", "LEIS", "MRIT", "MGMT", "MARA", "MARI", "MATL", "MATH", "MECH", "MEDP", "MEDR", "MICI", "MINE", "MUSC", "NESC", "NUMT", "NURS", "OCCU", "OCEA", "ORAL", "PHDP", "PATH", "PERF", "PERI", "PHAC", "PHAR", "PHIL", "PHYC", "PHYL", "PHYT", "PLAN", "POLI", "PGPH", "PEAS", "PROS", "PSYR", "PSYO", "PUAD", "RADT", "REGN", "RELS", "RSPT", "RUSN", "SCIE", "SLWK", "SOSA", "SPAN", "STAT", "SUST", "THEA", "TYPR", "VISC"]
+
+    
     terms = {
     "2018winter":"201920",
     "2018fall":"201910",
     "2018fall/winter":"201910%\2C201920",
-    "2019Summer":"201930"
+    "2019Summer":"201930",
+    "2019fall/winter":"202010,202020"
     }
     district = "100"
     
     database = db.Database()
 
     for subject in subjects:
-        url = "https://dalonline.dal.ca/PROD/fysktime.P_DisplaySchedule?s_term="+ terms["2018winter"] + "&s_subj="+ subject + "&s_district=" + district
+        url = "https://dalonline.dal.ca/PROD/fysktime.P_DisplaySchedule?s_term="+ terms["2019fall/winter"] + "&s_subj="+ subject + "&s_district=" + district
 
                 # THIS IS THE FINAL ARRAY WITH ALL INFORMATION IN IT
                 # use as data[courseindex] .title or .classes[classindex] for full info

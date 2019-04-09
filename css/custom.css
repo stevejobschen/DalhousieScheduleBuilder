@@ -543,7 +543,7 @@ nav {
 
 }
 
-#course-add-btn {
+.course-add-btn {
   margin-top: 12px;
   cursor: pointer;
   margin-right: 15px;

@@ -21,7 +21,7 @@ class Database:
         def saveCourses(self, courses):
             try:
                 for i in range(0, len(courses)):
-                    self.cursor.execute("INSERT INTO courses(title, category, code, term) VALUES (\"{0}\", \"{1}\", \"{2}\", 2);".format(courses[i].title, courses[i].category, courses[i].code))
+                    self.cursor.execute("INSERT INTO courses(title, category, code, term) VALUES (\"{0}\", \"{1}\", \"{2}\", \"{3}\");".format(courses[i].title[0:-1], courses[i].category, courses[i].code, courses[i].title[-1])) #the title combined both title and termNub at end
                     self.connection.commit()
                     courseId = self.cursor.lastrowid
                     self.saveClass(courses[i].classes, courseId)

@@ -6,11 +6,6 @@ Dal Schedule Builder is a web app built for Dalhousie students registering for c
 ## How do I keep classes up-to-date?
 Web scrapping [Dal TimeTable](https://dalonline.dal.ca/PROD/fysktime.P_DisplaySchedule) for the information. 
 
-## Preview
-
-<p align="center">
-  <img src="http://i.imgur.com/rBXzpbV.png" alt="Web Preview"/>
-</p>
 
 ## TODO
 

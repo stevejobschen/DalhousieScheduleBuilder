@@ -222,9 +222,9 @@ def main():
     # winter subjects
     #subjects = ["ACSC","ANAT","ARBC","ARCH","ASSC","BIOC","BIOE","BIOL","BMNG","BUSI","CANA","CNLT","CHEE","CHEM","CHIN","CIVL","CLAS","COMM","CH_E","CPST","CSCI","CTMP","CRWR","DEHY","DENT","DMUT","EMSP","ERTH","ECON","ECED","ECMM","ENGI","INWK","ENGM","ENGL","ENSL","ENVE","ENVS","ENVI","EURO","FILM","FOSC","FREN","GWST","GEOG","GERM","HESA","HINF","HLTH","HPRO","HSCE","HAHP","HSTC","HIST","HUCD","INDG","IENG","INFO","INTE","INTD","IPHE","ITAL","JOUR","KINE","KING","LAWS","LEIS","MRIT","MGMT","MARA","MARI","MATL","MATH","MECH","MDLT","MEDP","MEDR","MICI","MINE","MUSC","NESC","NUMT","NURS","OCCU","OCEA","ORAL","PHDP","PATH","PERF","PERI","PHAC","PHAR","PHIL","PHYC","PHYL","PHYT","PLAN","POLI","PGPH","PEAS","PROS","PSYR","PSYO","PUAD","RADT","REGN","RELS","RSPT","RUSN","SCIE","SLWK","SOSA","SPAN","STAT","SUST","THEA","TYPR","VISC"]
     # 2019 summer subjects
-    #subjects = ["ANAT", "ASSC", "BIOC", "BIOT", "BIOE", "BIOL", "BMNG", "BUSI", "CANA", "CHEE", "CHEM", "CIVL", "CLAS", "COMM","CMSD", "CH_E", "CPST", "CSCI", "DEHY", "DENT", "DMUT", "EMSP", "ERTH", "ECON", "ECED", "ECMM", "ENGI", "INWK", "ENGM", "ENGL", "ENSL", "ENVE", "ENVS", "ENVI", "FOSC", "FREN", "GWST", "GEOG", "GERM", "HESA", "HINF", "HLTH", "HPRO", "HSTC", "HIST", "IENG", "INFO", "INTE", "INTD", "IPHE", "JOUR", "KINE", "LAWS", "LEIS", "MGMT", "MARA", "MARI", "MATL", "MATH", "MECH", "MEDP", "MEDR", "MEDI", "MICI", "MINE", "MUSC", "NESC", "NUMT", "NURS", "OCCU", "OCEA", "ORAL", "PHDP", "PATH", "PERI", "PHAC", "PETR", "PHAR", "PHAC" , "PHIL", "PHYC", "PHYL", "PHYT", "PLAN", "POLI", "PGPH", "PEAS", "PSYR", "PSYO", "PUAD", "RADT", "REGN", "RELS", "RSPT", "RUSN", "SCIE", "SLWK", "SOSA", "SPAN", "STAT", "SUST", "THEA", "VISC"]
+    subjects2020SUMMER = ["ANAT", "ASSC", "BIOC", "BIOT", "BIOE", "BIOL", "BMNG", "BUSI", "CANA", "CHEE", "CHEM", "CIVL", "CLAS", "COMM","CMSD", "CH_E", "CPST", "CSCI", "DEHY", "DENT", "DMUT", "EMSP", "ERTH", "ECON", "ECED", "ECMM", "ENGI", "INWK", "ENGM", "ENGL", "ENSL", "ENVE", "ENVS", "ENVI", "FOSC", "FREN", "GWST", "GEOG", "GERM", "HESA", "HINF", "HLTH", "HPRO", "HSTC", "HIST", "IENG", "INFO", "INTE", "INTD", "IPHE", "JOUR", "KINE", "LAWS", "LEIS", "MGMT", "MARA", "MARI", "MATL", "MATH", "MECH", "MEDP", "MEDR", "MEDI", "MICI", "MINE", "MUSC", "NESC", "NUMT", "NURS", "OCCU", "OCEA", "ORAL", "PHDP", "PATH", "PERI", "PHAC", "PETR", "PHAR", "PHAC" , "PHIL", "PHYC", "PHYL", "PHYT", "PLAN", "POLI", "PGPH", "PEAS", "PSYR", "PSYO", "PUAD", "RADT", "REGN", "RELS", "RSPT", "RUSN", "SCIE", "SLWK", "SOSA", "SPAN", "STAT", "SUST", "THEA", "VISC"]
     #2020 Fall
-    subjects = ["ACSC", "ANAT","ARBC", "ARCH", "ASSC", "BIOC", "BIOE", "BIOL", "BMNG", "BUSI", "CANA", "CHEE", "CHEM", "CHIN", "CIVL", "CLAS", "COMM", "CH_E", "CPST", "CSCI", "CTMP", "CRWR", "DEHY", "DENT", "DMUT", "EMSP", "ERTH", "ECON", "ECED", "ECMM", "ENGI", "ENGM", "ENGL", "ENSL", "ENVE", "ENVS", "ENVI", "EURO", "FILM", "FIGA", "FIGS", "FOSC", "FREN", "GWST", "GEOG", "GERM", "HESA", "HINF", "HLTH", "HPRO", "HSCE", "HAHP", "HSTC", "HIST", "INDG", "IENG", "INFO", "INTE", "INTD", "IPHE", "ITAL", "JOUR", "KINE", "KING", "LAWS", "LEIS", "MRIT", "MGMT", "MARA", "MARI", "MATL", "MATH", "MECH", "MEDP", "MEDR", "MICI", "MINE", "MUSC", "NESC", "NUMT", "NURS", "OCCU", "OCEA", "ORAL", "PHDP", "PATH", "PERF", "PERI", "PHAC", "PHAR", "PHIL", "PHYC", "PHYL", "PHYT", "PLAN", "POLI", "PGPH", "PEAS", "PROS", "PSYR", "PSYO", "PUAD", "RADT", "REGN", "RELS", "RSPT", "RUSN", "SCIE", "SLWK", "SOSA", "SPAN", "STAT", "SUST", "THEA", "TYPR", "VISC"]
+    subjects2020FALL = ["ACSC", "ANAT","ARBC", "ARCH", "ASSC", "BIOC", "BIOE", "BIOL", "BMNG", "BUSI", "CANA", "CHEE", "CHEM", "CHIN", "CIVL", "CLAS", "COMM", "CH_E", "CPST", "CSCI", "CTMP", "CRWR", "DEHY", "DENT", "DMUT", "EMSP", "ERTH", "ECON", "ECED", "ECMM", "ENGI", "ENGM", "ENGL", "ENSL", "ENVE", "ENVS", "ENVI", "EURO", "FILM", "FIGA", "FIGS", "FOSC", "FREN", "GWST", "GEOG", "GERM", "HESA", "HINF", "HLTH", "HPRO", "HSCE", "HAHP", "HSTC", "HIST", "INDG", "IENG", "INFO", "INTE", "INTD", "IPHE", "ITAL", "JOUR", "KINE", "KING", "LAWS", "LEIS", "MRIT", "MGMT", "MARA", "MARI", "MATL", "MATH", "MECH", "MEDP", "MEDR", "MICI", "MINE", "MUSC", "NESC", "NUMT", "NURS", "OCCU", "OCEA", "ORAL", "PHDP", "PATH", "PERF", "PERI", "PHAC", "PHAR", "PHIL", "PHYC", "PHYL", "PHYT", "PLAN", "POLI", "PGPH", "PEAS", "PROS", "PSYR", "PSYO", "PUAD", "RADT", "REGN", "RELS", "RSPT", "RUSN", "SCIE", "SLWK", "SOSA", "SPAN", "STAT", "SUST", "THEA", "TYPR", "VISC"]
     # test subjects
     #subjects =  ["CSCI","INFO", "INTE", "INTD", "IPHE", "ITAL", "JOUR", "KINE", "KING", "LAWS", "LEIS", "MRIT", "MGMT", "MARA", "MARI", "MATL", "MATH", "MECH", "MEDP", "MEDR", "MICI", "MINE", "MUSC", "NESC", "NUMT", "NURS", "OCCU", "OCEA", "ORAL", "PHDP", "PATH", "PERF", "PERI", "PHAC", "PHAR", "PHIL", "PHYC", "PHYL", "PHYT", "PLAN", "POLI", "PGPH", "PEAS", "PROS", "PSYR", "PSYO", "PUAD", "RADT", "REGN", "RELS", "RSPT", "RUSN", "SCIE", "SLWK", "SOSA", "SPAN", "STAT", "SUST", "THEA", "TYPR", "VISC"]
 
@@ -239,9 +239,18 @@ def main():
     district = "100"
     
     database = db.Database()
-
-    for subject in subjects:
+    # Fall and winter cource
+    for subject in subjects2020FALL:
         url = "https://dalonline.dal.ca/PROD/fysktime.P_DisplaySchedule?s_term="+ terms["2019fall/winter"] + "&s_subj="+ subject + "&s_district=" + district
+
+                # THIS IS THE FINAL ARRAY WITH ALL INFORMATION IN IT
+                # use as data[courseindex] .title or .classes[classindex] for full info
+        data = parseUrl(url)
+        database.saveCourses(data)
+
+    # Summer cource
+    for subject in subjects2020SUMMER:
+        url = "https://dalonline.dal.ca/PROD/fysktime.P_DisplaySchedule?s_term="+ terms["2019Summer"] + "&s_subj="+ subject + "&s_district=" + district
 
                 # THIS IS THE FINAL ARRAY WITH ALL INFORMATION IN IT
                 # use as data[courseindex] .title or .classes[classindex] for full info

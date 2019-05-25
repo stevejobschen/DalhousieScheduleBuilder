@@ -33,7 +33,7 @@ function setup_ui() {
       var name = $('.name').val();
       var email = $('.email').val();
       var body = $('.mail-body').val();
-      $.get( "http://localhost:8080/api/message?n=" + name + "&e=" + email + "&b=" + body, function( res ) {
+      $.get( "https://dalsb.stevc.com:8080/api/message?n=" + name + "&e=" + email + "&b=" + body, function( res ) {
         // trigger success popup
         $('.response-message').html("Success! The message sent");
         $('.response-message').css("display", "block");

@@ -497,7 +497,7 @@ nav {
   border: 1px solid #EFEFEF;
   width: 90%;
   background-color: #F9F9F9;
-  height: 53vh;
+  height: 62vh;
   overflow-y: scroll;
 }
 
@@ -611,7 +611,7 @@ nav {
 .course-crns {
   background-color: white;
   border: 1px solid #DEDEDE;
-  height: 165px;
+  height: 220px;
   width: 100%;
   margin-top: 13px;
   display:block;
@@ -686,6 +686,18 @@ nav {
   margin-bottom: 3px;
 }
 #CRN-winter-head {
+   -webkit-user-select: none;
+   -moz-user-select: none;
+   user-select: none;
+   -ms-user-select: none;
+   margin-bottom: 3px;
+   color: #C3C3C3;
+   font-size: 13px;
+   margin-left: 10px;
+   display: block;
+   margin-top: 10px;
+ }
+#CRN-summer-head {
   -webkit-user-select: none;
   -moz-user-select: none;
   user-select: none;
@@ -698,7 +710,7 @@ nav {
   margin-top: 10px;
 }
 
-#winter, #fall {
+#winter, #fall , #summer {
   border-radius: 0;
   -webkit-appearance: none;
   -moz-appearance: none;
